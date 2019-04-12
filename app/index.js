@@ -2,16 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 
-var config = {
-  proxy: {
-    host: '127.0.0.1',
-    port: 8080
-  }
-}
-
-axios.get('https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States')
+axios.get('http://localhost:1234/api/search?url=https://example.com/')
   .then(result => {
-    console.log(JSON.stringify(result))
+    console.log((result.data))
   })
 
 class App extends React.Component{
