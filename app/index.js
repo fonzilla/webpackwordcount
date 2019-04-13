@@ -56,6 +56,7 @@ class Search extends React.Component {
             name="url"
             value={this.state.url}
             onChange={this.handleChange}
+            type="url"
           />
           <br />
           <input
@@ -63,6 +64,7 @@ class Search extends React.Component {
             name="searchTerm"
             value={this.state.searchTerm}
             onChange={this.handleChange}
+            required
           />
           <br />
           <button className="button">Submit</button>
