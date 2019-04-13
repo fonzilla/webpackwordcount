@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+require("./index.css");
 
 // axios.get('http://localhost:1234/api/search?url=https://example.com/')
 //   .then(result => {
@@ -36,13 +37,16 @@ class Search extends React.Component {
         let regexSearch = new RegExp(this.state.searchTerm, "g");
         let count = (result.data.match(regexSearch) || []).length;
         console.log(typeof result.data);
+        this.setState({
+          count: count
+        });
       });
   }
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="container">
+        <form onSubmit={this.handleSubmit} className="column">
           <input
             placeholder="Enter Valid URL to Scrape"
             name="url"
@@ -57,8 +61,9 @@ class Search extends React.Component {
             onChange={this.handleChange}
           />
           <br />
-          <button>Submit</button>
+          <button className="button">Submit</button>
         </form>
+        <h1>Count:{this.state.count}</h1>
       </div>
     );
   }
