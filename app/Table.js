@@ -1,9 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 class Table extends React.Component {
   render() {
-    let table = this.props.table;
+    const { table } = this.props;
     return (
       <table class="my_table">
         <tr>

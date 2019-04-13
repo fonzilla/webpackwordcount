@@ -31,14 +31,15 @@ class Search extends React.Component {
     axios
       .get(`http://localhost:1234/api/search?url=${this.state.url}`)
       .then(result => {
-        let regexSearch = new RegExp(this.state.searchTerm, "g");
-        let count = (result.data.match(regexSearch) || []).length;
-        let resultTable = {
+        const regexSearch = new RegExp(this.state.searchTerm, "g");
+        const count = (result.data.match(regexSearch) || []).length;
+        const resultTable = {
           date: Date(),
           url: this.state.url,
           searchTerm: this.state.searchTerm,
           count: count
         };
+
         this.setState({
           count: count,
           source: result.data,
