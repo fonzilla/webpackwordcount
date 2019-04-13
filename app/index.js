@@ -5,8 +5,9 @@ import Table from "./Table";
 require("./index.css");
 
 class Search extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
     this.state = {
       url: "",
       searchTerm: "",
@@ -30,6 +31,7 @@ class Search extends React.Component {
     axios
       .get(`http://localhost:1234/api/search?url=${this.state.url}`)
       .then(result => {
+        console.log(result);
         let regexSearch = new RegExp(this.state.searchTerm, "g");
         let count = (result.data.match(regexSearch) || []).length;
         let resultTable = {
