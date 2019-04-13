@@ -1,14 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+import Table from "./Table";
 require("./index.css");
-
-// axios.get('http://localhost:1234/api/search?url=https://example.com/')
-//   .then(result => {
-//     console.log((result.data))
-//   })
-
-function countString(data, str) {}
 
 class Search extends React.Component {
   constructor() {
@@ -16,7 +10,9 @@ class Search extends React.Component {
     this.state = {
       url: "",
       searchTerm: "",
-      count: null
+      count: null,
+      source: "",
+      table: {}
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,9 +32,17 @@ class Search extends React.Component {
       .then(result => {
         let regexSearch = new RegExp(this.state.searchTerm, "g");
         let count = (result.data.match(regexSearch) || []).length;
-        console.log(typeof result.data);
-        this.setState({
+        //console.log(typeof result.data);
+        let resultTable = {
+          date: Date(),
+          url: this.state.url,
+          searchTerm: this.state.searchTerm,
           count: count
+        };
+        this.setState({
+          count: count,
+          source: result.data,
+          table: resultTable
         });
       });
   }
@@ -63,15 +67,11 @@ class Search extends React.Component {
           <br />
           <button className="button">Submit</button>
         </form>
-        <h1>Count:{this.state.count}</h1>
+        <br />
+        <Table table={this.state.table} />
+        <textarea className="container" value={this.state.source} />
       </div>
     );
-  }
-}
-
-class App extends React.Component {
-  render() {
-    return <div>Hello World jaja</div>;
   }
 }
 

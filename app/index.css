@@ -9,10 +9,6 @@ body {
   align-items: center;
 }
 
-/* .container {
-  margin: 0 auto;
-} */
-
 .column input {
   border-radius: 3px;
   margin: 10px 0;
@@ -40,4 +36,28 @@ body {
   flex-direction: column;
   width: 500px;
   align-items: center;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+}
+
+table,
+th,
+td {
+  table-layout: fixed;
+  width: 80%;
+  border: 1px solid black;
+}
+
+textarea {
+  margin: 5%;
+  width: 800px;
+  height: 500px;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
 }
