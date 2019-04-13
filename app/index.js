@@ -28,11 +28,10 @@ class Search extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     axios
-      .get(`http://localhost:1234/api/search?url=` + this.state.url)
+      .get(`http://localhost:1234/api/search?url=${this.state.url}`)
       .then(result => {
         let regexSearch = new RegExp(this.state.searchTerm, "g");
         let count = (result.data.match(regexSearch) || []).length;
-        //console.log(typeof result.data);
         let resultTable = {
           date: Date(),
           url: this.state.url,
